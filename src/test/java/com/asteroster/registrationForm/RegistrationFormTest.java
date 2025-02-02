@@ -1,4 +1,4 @@
-package com.asteroster.practiceFormTest;
+package com.asteroster.registrationForm;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
