@@ -1,6 +1,7 @@
 package com.asteroster.registrationForm.pages;
 
 import com.asteroster.registrationForm.pages.components.CalendarComponent;
+import com.asteroster.registrationForm.pages.components.CheckResultTableComponent;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
@@ -13,6 +14,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class RegistrationPage {
 
     CalendarComponent calendarComponent = new CalendarComponent();
+    CheckResultTableComponent checkResultTableComponent = new CheckResultTableComponent();
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
@@ -36,7 +38,7 @@ public class RegistrationPage {
                             setStateCityLocator = $("#stateCity-wrapper"),
                             submitButtonLocator = $("#submit"),
                             resultTableLocator = $(".modal-content"),
-                            checkResultLocator = $(".table-responsive"),
+                            //checkResultLocator = $(".table-responsive"),
                             closeTableLocator = $("#closeLargeModal");
 
 
@@ -129,12 +131,18 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage checkResult(String key, String value) {
-        checkResultLocator.$(byText(key)).parent()
-                .shouldHave(text(value));
+    public RegistrationPage submitTableNegative() {
+        resultTableLocator.shouldNotBe(appear);
 
         return this;
     }
+
+    public RegistrationPage checkResult(String key, String value) {
+        checkResultTableComponent.checkResultTable(key,value);
+
+        return this;
+    }
+
 
     public RegistrationPage closeTable() {
         closeTableLocator.click();

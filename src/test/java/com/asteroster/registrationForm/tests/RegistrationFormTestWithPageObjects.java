@@ -4,7 +4,6 @@ import com.asteroster.registrationForm.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
 
-
 public class RegistrationFormTestWithPageObjects extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
@@ -42,5 +41,37 @@ public class RegistrationFormTestWithPageObjects extends TestBase {
                 .checkResult("State and City", "Haryana Panipat")
 
                 .closeTable();
+    }
+
+    @Test
+    public void minimalLinesTest() {
+
+        registrationPage.openPage()
+
+                .setFirstName("John")
+                .setLastName("Derrick")
+                .setGender("Male")
+                .setUserNumber("1954756852")
+                .submit()
+                .submitTable("Thanks for submitting the form")
+
+                .checkResult("Student Name", "John Derrick")
+                .checkResult("Gender", "Male")
+                .checkResult("Mobile", "1954756852")
+                .closeTable();
+    }
+
+    @Test
+    public void registrationPageNegativeTest() {
+        registrationPage.openPage()
+                .setFirstName("John")
+                .setLastName("Derrick")
+                .setUserEmail("JohnDerrick@mail.qw")
+                .setUserNumber("1954756852")
+                .setSubject("Arts")
+                .setPicture()
+                .setCurrentAddress("Some text for Current Address")
+                .submit()
+                .submitTableNegative();
     }
 }
