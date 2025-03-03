@@ -21,7 +21,7 @@ public class RegistrationFormTestWithPageObjects extends TestBase {
                 .setDateOfBirth("27", "May", "1985")
                 .setSubject("Arts")
                 .setHobby("Music")
-                .setPicture()
+                .setPicture("Rattus.jpg")
                 .setCurrentAddress("Some text for Current Address")
                 .setState("Haryana")
                 .setCity("Panipat")
@@ -69,7 +69,7 @@ public class RegistrationFormTestWithPageObjects extends TestBase {
                 .setUserEmail("JohnDerrick@mail.qw")
                 .setUserNumber("1954756852")
                 .setSubject("Arts")
-                .setPicture()
+                .setPicture("Rattus.jpg")
                 .setCurrentAddress("Some text for Current Address")
                 .submit()
                 .submitTableNegative();

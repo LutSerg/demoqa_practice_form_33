@@ -4,6 +4,9 @@ import com.asteroster.registrationForm.pages.components.CalendarComponent;
 import com.asteroster.registrationForm.pages.components.CheckResultTableComponent;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.github.javafaker.Faker;
+
+import java.util.Locale;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
@@ -38,7 +41,6 @@ public class RegistrationPage {
                             setStateCityLocator = $("#stateCity-wrapper"),
                             submitButtonLocator = $("#submit"),
                             resultTableLocator = $(".modal-content"),
-                            //checkResultLocator = $(".table-responsive"),
                             closeTableLocator = $("#closeLargeModal");
 
 
@@ -92,8 +94,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setPicture() {
-        setPictureLocator.uploadFromClasspath("Rattus.jpg");
+    public RegistrationPage setPicture(String value) {
+        setPictureLocator.uploadFromClasspath(value);
 
         return this;
     }
